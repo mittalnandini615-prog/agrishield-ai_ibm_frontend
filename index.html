@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriShield Vision & Voice UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <span class="icon">🌿</span>
+        <h1 class="title">AgriShield Vision</h1>
+      </div>
+      <p class="subtitle">Crop Disease Detection & Voice Assistant</p>
+    </header>
+
+    <div class="grid">
+      <!-- Input Card -->
+      <div class="card">
+        <h2 class="card-title">1. Upload Leaf Image</h2>
+
+        <form id="analyze-form">
+          <div class="field">
+            <label class="label" for="crop-type">Select Crop Type</label>
+            <select id="crop-type" class="select" required>
+              <option value="wheat">Wheat</option>
+              <option value="rice">Rice</option>
+              <option value="corn">Corn</option>
+              <option value="soybean">Soybean</option>
+              <option value="cotton">Cotton</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="label">Leaf Photo</label>
+            <div class="dropzone" id="dropzone">
+              <input type="file" id="file-input" accept="image/*" hidden />
+              <div id="upload-placeholder">
+                <span class="upload-icon">📸</span>
+                <p>Click or drag image here to upload</p>
+              </div>
+              <img id="preview-img" class="preview-img hidden" alt="Leaf Preview" />
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn" disabled>
+            Analyze Leaf Health
+          </button>
+        </form>
+
+        <div id="error-message" class="error hidden"></div>
+      </div>
+
+      <!-- Results Card -->
+      <div class="card">
+        <h2 class="card-title">2. Diagnostic Results</h2>
+
+        <div id="empty-state" class="empty-state">
+          <span class="empty-icon">🍃</span>
+          <p>Upload a leaf image and click "Analyze" to see health diagnostics and audio guidance.</p>
+        </div>
+
+        <div id="results-container" class="results-container hidden">
+          <div id="badge" class="badge">--</div>
+
+          <div class="metric-group">
+            <div class="metric">
+              <span class="metric-label">Crop</span>
+              <span id="metric-crop" class="metric-val">--</span>
+            </div>
+            <div class="metric">
+              <span class="metric-label">Lesion Density</span>
+              <span id="metric-density" class="metric-val">--</span>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <h3 class="info-title">Detected Issue</h3>
+            <p id="info-disease" class="info-text">--</p>
+          </div>
+
+          <div class="info-box">
+            <h3 class="info-title">Treatment Recommendation</h3>
+            <p id="info-treatment" class="info-text">--</p>
+          </div>
+
+          <button id="audio-btn" class="btn-audio">
+            🔊 Listen to Recommendation
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
